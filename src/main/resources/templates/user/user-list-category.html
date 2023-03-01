@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>NIXFLET</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+          integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link th:href="@{/css/detail.css}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" th:href="@{~/css/images/logo.png}"/>
+</head>
+<body>
+<section>
+    <div class="hero">
+        <nav>
+            <img th:href="@{/movies/}"
+                 th:src="@{~/css/images/logo.png}" type="image/png" class="logo">
+            <ul>
+                <li><a th:href="@{/index/}">HOME</a></li>
+                <li><a th:href="@{/movies/cartoon/}">CARTOON</a></li>
+                <li><a th:href="@{/movies/action/}">ACTION</a></li>
+                <li><a th:href="@{/movies/romantic/}">ROMANTIC</a></li>
+                <li><a th:href="@{/movies/honor/}">HONOR</a></li>
+            </ul>
+        </nav>
+        <div class="container header">
+            <div class="container series">
+                <h3>List Movies</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <th:block th:each="moviePost :${listFound}">
+                                <div class="col-4">
+                                    <a th:href="@{'/movies/view/' + ${moviePost.id}}">
+                                        <img th:src="@{https://lh4.googleusercontent.com/{url}(url=${moviePost.image})}">
+                                        <div class="detail text-center" th:text="${moviePost.name}">
+                                        </div>
+                                    </a>
+                                </div>
+                            </th:block>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Movie Detail</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link th:href="@{/css/detail.css}" rel="stylesheet">
+</head>
+<body>
+<section>
+    <div class="container  header">
+        <a th:href="@{/admin/movies/}">
+            <img
+             th:src="@{https://lh5.googleusercontent.com/ki_ghwp_aePgjDz8JHUunyULoMb3ptTNCtfGP_outG7-dfr3fAZkzMNkLmas8xqQpqs=w1200-h630-p}" class="logo">
+        </a>
+        <a href="#" class="header-btn">Account</a>
+        <div class="container movie-details">
+            <div class="row">
+                <div class="col-md-8 left-box ">
+                    <h1 th:text="${movie.name}"></h1>
+                    <p>Cast: </p>
+                    <div class="casting">
+                        <img th:src="@{https://lh4.googleusercontent.com/OR4T_7NwCQWiDrep1Bozc0NxHeiG0r29krJd9RRt4KX_JGZG_kaC0yE6LdXdbWvjnGo=w1200-h630-p}" title="doraemon">
+                        <img th:src="@{https://lh3.googleusercontent.com/p55rb9B6VOJqtrznZ8HDu4kzoJy8TPf_FjxFcxGNu6fMD6iUaNJHSB1o7vxwnxQwowU=w1200-h630-p}" title="nobia">
+                        <img th:src="@{https://lh5.googleusercontent.com/iKS8I7zCAKPmtbyNRfXCU9m3zTiOz9bQuPRNeIIL7kKTK6CQJUeY2CAkuT8HdfLbB30=w1200-h630-p}" title="xuka">
+                        <img th:src="@{https://lh6.googleusercontent.com/O73gCTbYLoB4pOdxD1oxtQ9npsN2nRYE-IF2ZHyDNhvKBX4z21Q_8wmmUzarKWmACAI=w1200-h630-p}" title="xeko">
+                        <img th:src="@{https://lh4.googleusercontent.com/N6L7e8p9kD967_J3huLaSsY5kfqAaeVMifGlzimq5APUkJTnIxyftazSFEisXF1r8ME=w1200-h630-p}" title="chaien">
+                    </div>
+                    <a th:href="@{https://www.youtube.com/embed/{url}(url=${movie.videoURL})}"><i class="far fa-play"></i>Watch now</a>
+                    <a href="#" class="download-btn"><i class="far fa-download"></i>Download</a>
+
+                    <iframe width="622" height="345"
+                            th:src="@{https://www.youtube.com/embed/{url}(url=${movie.videoURL})}">
+                    </iframe>
+
+                </div>
+                <div class="col-md-4 text-center">
+                    <img class="movie-img" th:src="@{https://lh4.googleusercontent.com/{url}(url=${movie.image})}" title="poster">
+                    <div class="detail">
+                        <div>
+                            <span>Rating: </span>
+                            <span th:text="${movie.rating}"></span>
+                        </div>
+                        <div>
+                            <span>Length: </span>
+                            <span th:text="${movie.lengthMinute} + minutes"></span>
+                        </div>
+                        <div class="description">
+                            <span>Description: </span>
+                            <span th:text="${movie.description}"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container series">
+        <h3>Popular Movies</h3>
+        <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <th:block th:each="moviePost :${movieList}">
+                            <div class="col-2">
+                                <a th:href="@{'/admin/movies/view/' + ${moviePost.id}}">
+                                    <img th:src="@{https://lh4.googleusercontent.com/{url}(url=${moviePost.image})}">
+                                    <div class="detail text-center" th:text="${moviePost.name}">
+                                </div>
+                                </a>
+                            </div>
+                        </th:block>
+
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</section>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
